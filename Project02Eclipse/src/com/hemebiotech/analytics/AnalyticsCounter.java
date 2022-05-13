@@ -11,7 +11,7 @@ public class AnalyticsCounter {
 	
 	public static void main(String args[]) throws Exception {
 		// first get input
-		BufferedReader reader = new BufferedReader (new FileReader("symptoms.txt"));
+		BufferedReader reader = new BufferedReader (new FileReader("Project02Eclipse/symptoms.txt"));
 		String line = reader.readLine();
 
 		int i = 0;	// set i to 0
@@ -23,7 +23,7 @@ public class AnalyticsCounter {
 				headCount++;
 				System.out.println("number of headaches: " + headCount);
 			}
-			else if (line.equals("rush")) {
+			else if (line.equals("rash")) {
 				rashCount++;
 			}
 			else if (line.contains("pupils")) {
@@ -34,8 +34,8 @@ public class AnalyticsCounter {
 		}
 		
 		// next generate output
-		FileWriter writer = new FileWriter ("result.out");
-		writer.write("headache: " + headacheCount + "\n");
+		FileWriter writer = new FileWriter ("Project02Eclipse/result.out");
+		writer.write("headache: " + headCount + "\n");
 		writer.write("rash: " + rashCount + "\n");
 		writer.write("dialated pupils: " + pupilCount + "\n");
 		writer.close();
