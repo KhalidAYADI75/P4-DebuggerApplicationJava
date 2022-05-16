@@ -30,10 +30,9 @@ public class AnalyticsCounter {
 				pupilCount++;
 			}
 
-			line = reader.readLine();	// get another symptom
+			line = reader.readLine();
 		}
-		
-		// next generate output
+
 		FileWriter writer = new FileWriter ("Project02Eclipse/result.out");
 		writer.write("headache: " + headCount + "\n");
 		writer.write("rash: " + rashCount + "\n");
