@@ -4,8 +4,12 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 
+/**
+ * Counts the numbers of occurences of "headache","rash" and "pupils" from the file symptoms.txt
+ * and write the result in result.out file
+ */
 public class AnalyticsCounter {
-	private static int headacheCount = 0;
+	private static int headCount = 0;
 	private static int rashCount = 0;
 	private static int pupilCount = 0;
 
@@ -15,7 +19,6 @@ public class AnalyticsCounter {
 		String line = reader.readLine();
 
 		int i = 0;
-		int headCount = 0;
 		while (line != null) {
 			i++;
 			System.out.println("symptom from file: " + line);
