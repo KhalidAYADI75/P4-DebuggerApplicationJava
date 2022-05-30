@@ -1,45 +1,42 @@
 package com.hemebiotech.analytics;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
- * Counts the numbers of occurences of "headache","rash" and "pupils" from the file symptoms.txt
- * and write the result in result.out file
+ * Get the list of symptoms from the file symptoms.txt and set them in the list listeDeSymptomes
+ * From the list listeDeSymptomes, count the number of occurences for each symptom and set them in the Map symptomCounter
+ * Write the result in the file result.out
  */
 public class AnalyticsCounter {
-	private static int headCount = 0;
-	private static int rashCount = 0;
-	private static int pupilCount = 0;
+	private List<String> listeDeSymptomes;
+	private Map<String, Integer> symptomCounter;
+	private final String filePathResult = "Project02Eclipse/result.out";
+	public AnalyticsCounter(String filepath) {
+		this.listeDeSymptomes = new ReadSymptomDataFromFile(filepath).GetSymptoms();
+	}
 
-	public static void main(String args[]) throws Exception {
-
-		BufferedReader reader = new BufferedReader (new FileReader("Project02Eclipse/symptoms.txt"));
-		String line = reader.readLine();
-
-		int i = 0;
-		while (line != null) {
-			i++;
-			System.out.println("symptom from file: " + line);
-			if (line.equals("headache")) {
-				headCount++;
-				System.out.println("number of headaches: " + headCount);
+	/**
+	 * Count the number of occurences from the list listeDeSymptomes
+	 */
+	public void countSymptom() {
+		Map<String, Integer> symptomCounterMap = new TreeMap<>();
+		for (String symptome : listeDeSymptomes) {
+			if (symptomCounterMap.containsKey(symptome)) {
+				symptomCounterMap.put(symptome, symptomCounterMap.get(symptome) + 1);
+			} else {
+				symptomCounterMap.put(symptome, 1);
 			}
-			else if (line.equals("rash")) {
-				rashCount++;
-			}
-			else if (line.contains("pupils")) {
-				pupilCount++;
-			}
-
-			line = reader.readLine();
 		}
+		symptomCounter = symptomCounterMap;
+	}
 
-		FileWriter writer = new FileWriter ("Project02Eclipse/result.out");
-		writer.write("headache: " + headCount + "\n");
-		writer.write("rash: " + rashCount + "\n");
-		writer.write("dialated pupils: " + pupilCount + "\n");
-		writer.close();
+	/**
+	 * Write each entry of the Map symptomCounter to the file result.out , one entry per line .
+	 */
+	public void writeResult() {
+		WriteSymptomDataToFile writeSymptomDataToFile = new WriteSymptomDataToFile(symptomCounter, filePathResult);
+		writeSymptomDataToFile.writeOutputFile();
 	}
 }
