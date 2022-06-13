@@ -14,7 +14,7 @@ public class AnalyticsCounter {
 	private Map<String, Integer> symptomCounter;
 	private final String filePathResult = "Project02Eclipse/result.out";
 	public AnalyticsCounter(String filepath) {
-		this.listeDeSymptomes = new ReadSymptomDataFromFile(filepath).GetSymptoms();
+		this.listeDeSymptomes = new ReadSymptomDataFromFile(filepath).getSymptoms();
 	}
 
 	/**
