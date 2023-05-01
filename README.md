@@ -1,4 +1,4 @@
-La version finale du projet est dans la branche Release/V1 .
+La version finale du projet est dans la branche release/V1 .
 ## L'objectif est d'identifier et de corriger les bugs de l'application :<br/>
 
 ● lire les données depuis un fichier texte. Le fichier texte sera une liste de symptômes. Il y aura un symptôme par ligne.<br/>
